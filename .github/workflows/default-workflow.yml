@@ -5,6 +5,7 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   create-env-file:
     runs-on: ubuntu-latest
+    environment: dev
     
     steps:
     - name: Checkout code
