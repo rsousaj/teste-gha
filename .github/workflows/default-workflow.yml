@@ -24,7 +24,9 @@ jobs:
         ENV_VAR_2: ${{ secrets.ENV_VAR_2 }}
 
     - name: Generate .env file
-      run: ./generate-env.sh
+      run: |
+        chmod +x generate-env.sh
+        ./generate-env.sh
 
     - name: Verify .env file creation
       run: cat .env
