@@ -16,9 +16,10 @@ jobs:
         node-version: '16' # Specify your Node.js version
 
     - name: Set environment variables from GitHub secrets
-    - uses: oNaiPs/secrets-to-env-action@v1
+      uses: oNaiPs/secrets-to-env-action@v1
       with:
         secrets: ${{ toJSON(secrets) }}
+      run: echo "Value of ENV1: $ENV1"
 
     - name: Generate .env file
       run: |
