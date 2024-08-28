@@ -1,0 +1,30 @@
+name: Create .env File
+
+on: [push, pull_request]
+
+jobs:
+  create-env-file:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16' # Specify your Node.js version
+
+    - name: Set environment variables from GitHub secrets
+      run: |
+        echo "ENV_VAR_1=${{ secrets.ENV_VAR_1 }}" >> $GITHUB_ENV
+        echo "ENV_VAR_2=${{ secrets.ENV_VAR_2 }}" >> $GITHUB_ENV
+      env:
+        ENV_VAR_1: ${{ secrets.ENV_VAR_1 }}
+        ENV_VAR_2: ${{ secrets.ENV_VAR_2 }}
+
+    - name: Generate .env file
+      run: ./generate-env.sh
+
+    - name: Verify .env file creation
+      run: cat .env
