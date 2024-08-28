@@ -20,6 +20,11 @@ jobs:
       uses: oNaiPs/secrets-to-env-action@v1
       with:
         secrets: ${{ toJSON(secrets) }}
+        
+    - name: Set environment variables from GitHub env variables
+      uses: oNaiPs/secrets-to-env-action@v1
+      with:
+        secrets: ${{ toJSON(vars) }}
 
     - name: Generate .env file
       run: |
