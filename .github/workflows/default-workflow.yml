@@ -31,6 +31,8 @@ jobs:
 
     - name: Commit the file
       run: |
+        git config --global user.email "you@example.com"
+        git config --global user.name "Your Name"
         git add .env
         git commit -m "updating file"
         git push
