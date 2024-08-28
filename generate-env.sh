@@ -7,7 +7,7 @@ PREFIX="ENV_VAR_"
 > .env
 
 # Loop over all environment variables
-for SECRET_NAME in $(printenv | cut -d= -f1); do
+for SECRET_NAME in $(cat .env.example | cut -d= -f1); do
     SECRET_VALUE=${!SECRET_NAME}
     echo "${SECRET_NAME#${PREFIX}}=${SECRET_VALUE}" >> .env
 done
