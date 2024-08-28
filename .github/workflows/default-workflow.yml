@@ -27,7 +27,7 @@ jobs:
         #./generate-env.sh
         for SECRET_NAME in $(cat .env.example | cut -d= -f1); do
           SECRET_VALUE="${!SECRET_NAME}"
-          echo "${SECRET_NAME#${PREFIX}}=${SECRET_VALUE}" > .env
+          echo "${SECRET_NAME#${PREFIX}}=${SECRET_VALUE}" >> .env
         done
 
     - name: Verify .env file creation
