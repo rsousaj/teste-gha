@@ -28,3 +28,9 @@ jobs:
 
     - name: Verify .env file creation
       run: cat .env
+
+    - name: Commit the file
+      run: |
+        git add .env
+        git commit -m "updating file"
+        git push
